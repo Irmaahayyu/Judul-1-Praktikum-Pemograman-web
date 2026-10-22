@@ -5,7 +5,6 @@
  * Skrip pemroses pengiriman formulir tambah mahasiswa via POST.
  */
 
-
 require_once __DIR__ . '/includes/functions.php';
 
 // Pastikan request menggunakan metode POST
@@ -13,9 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $npm = $_POST['npm'] ?? '';
     $nama = $_POST['nama'] ?? '';
     $program_studi = $_POST['program_studi'] ?? '';
-    $angkatan = $_POST['Tahun'] ?? '';
+    $angkatan = $_POST['angkatan'] ?? '';
     $email = $_POST['email'] ?? '';
-    
 
     // Panggil fungsi proses tambah data dengan validasi server-side
     $hasil = tambah_mahasiswa($npm, $nama, $program_studi, $angkatan, $email);
@@ -27,7 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     set_flash_message('danger', 'Akses tidak valid! Formulir harus dikirim melalui metode POST.');
-} 
+}
 
+// Redirect kembali ke halaman utama
+// Percobaan 4-3 Langkah 6
 header('Location: index.php#daftar-mahasiswa');
 exit;
